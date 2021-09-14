@@ -1,0 +1,11 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<style>
+    .headerDivider{
+        margin :30px 0;
+    }
+</style>
+<h1>Tarefa Tabela-Price</h1>
+<a href="<%= request.getContextPath()%>index.jsp">INÍCIO</a>
+<a href="<%= request.getContextPath()%>tabela-price.jsp">TABELA PRICE</a>
+<hr class="headerDivider"/>
