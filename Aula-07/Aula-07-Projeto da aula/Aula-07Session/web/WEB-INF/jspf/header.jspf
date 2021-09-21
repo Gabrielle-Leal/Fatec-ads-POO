@@ -1,0 +1,19 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<%
+    if
+
+
+
+%>
+
+
+
+<h1>SessionApp</h1>
+<form>
+    <a href="index.jsp">Início</a> |
+    <a href="page1.jsp">Pagina 1</a> |
+    <a href="page2.jsp">Pagina 2</a> |
+    <%if(auth-username)==null) {%>
+    <input type="text"/>
+</form>
