@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <%
     //Processamento do contador de requisiçoes da aplicação
-    int counter = 1;
+    
     if(application.getAttribute("counter")==null){
         application.setAttribute("counter", 1);
     }
@@ -46,6 +46,15 @@
         if(application.getAttribute("name")!=null)
             applicationName = (String) application.getAttribute("name");
     }catch(Exception ex){error = ex.getMessage();}
+    
+
+
+
+
+
+
+
+
 %>
 
 <html>

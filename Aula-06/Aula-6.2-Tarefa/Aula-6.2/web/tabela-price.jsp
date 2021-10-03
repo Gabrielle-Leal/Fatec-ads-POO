@@ -12,7 +12,7 @@
         <title>Tabela Price</title>
         <style>
 
-            @charset "UTF-8";
+           @charset "UTF-8";
             @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
             body {
@@ -42,7 +42,6 @@
             form label{
                 color: #F0;
             }
-
             form input:focus,
             form input:active{
                 outline:none;
@@ -55,7 +54,8 @@
                 text-decoration: none;
             }
             a:hover,
-            #botao:hover{
+            #botao:hover,
+            input[type=submit]:hover{
                 background-color: #FFF842;
                 color: #403E10;
                 font-weight: bold;
@@ -68,6 +68,24 @@
                 transition-property: all;
                 transition-timing-function: line;
             }
+            p{
+                font-size:1em; 
+                font-weight: 300;
+                text-align: center;
+                display: block;
+                line-height:1em;
+                padding-bottom: 2em;
+                color: #FB667A;
+                
+            }
+            
+            p a {
+                font-weight: 700;
+                text-transform: uppercase;
+                color: #FB667A;
+                text-decoration: none;
+            }
+            
             h1 {
                 font-size:3em; 
                 font-weight: 300;
@@ -112,9 +130,9 @@
             }
 
             table {
-                text-align: left;
+                text-align: center;
                 overflow: hidden;
-                width: 80%;
+                width: 30%;
                 margin: 0 auto;
                 display: table;
             }
@@ -166,7 +184,41 @@
                 table td:nth-child(4),
                 table th:nth-child(4) { display: none; }
             }
-        </style>
+            </style>
+            
+            
+            
+            
+            <style>
+    a:hover,
+    #botao:hover,
+    input[type=submit]:hover{
+        background-color: #FFF842;
+        color: #403E10;
+        font-weight: bold;
+
+        box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+        transform: translate3d(6px, -6px, 0);
+
+        transition-delay: 0s;
+        transition-duration: 0.4s;
+        transition-property: all;
+        transition-timing-function: line;
+    }
+    input[type=submit]{
+        padding:10px;
+    }
+    input[type=text]{
+        padding: 10px 0;
+    }
+    .form-login{
+        Text-align: center;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        gap: 5px;
+    }
+</style>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>

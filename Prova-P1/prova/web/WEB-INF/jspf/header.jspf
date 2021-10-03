@@ -1,0 +1,95 @@
+<%-- any content can be specified here e.g.: --%>
+<%@page import="java.util.ArrayList"%>
+<%@ page pageEncoding="UTF-8" %>
+
+
+<style>
+    a:hover,
+    #botao:hover,
+    input[type=submit]:hover{
+        background-color: #FFF842;
+        color: #403E10;
+        font-weight: bold;
+
+        box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+        transform: translate3d(6px, -6px, 0);
+
+        transition-delay: 0s;
+        transition-duration: 0.4s;
+        transition-property: all;
+        transition-timing-function: line;
+    }
+    input[type=submit]{
+        padding:10px;
+    }
+    input[type=text]{
+        padding: 10px 0;
+    }
+    .form-login{
+        Text-align: center;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        gap: 5px;
+    }
+    
+</style>
+
+<%
+    ArrayList<String> listaLogados = new ArrayList();
+    ArrayList<Integer> numeros = new ArrayList();
+
+    if (application.getAttribute("counter") == null) {
+        application.setAttribute("counter", 0);
+    }
+    int counter = (int) application.getAttribute("counter");
+
+    if (request.getParameter("auth-login") != null) {
+        String userName = request.getParameter("name");
+        session.setAttribute("name", userName);
+        if (application.getAttribute("logados") == null) {
+            listaLogados.add(userName);
+            application.setAttribute("logados", listaLogados);
+        } else {
+            listaLogados = (ArrayList) application.getAttribute("logados");
+            listaLogados.add(userName);
+            application.setAttribute("logados", listaLogados);
+        }
+
+        application.setAttribute("counter", ++counter);
+
+        do {
+            Integer rand = (int) (Math.random() * 60 + 1);
+
+            if (!numeros.contains(rand)) {
+                numeros.add(rand);
+            }
+        } while (numeros.size() < 6);
+
+        session.setAttribute("listaNumeros", numeros);
+
+    } else if (request.getParameter("auth-logout") != null) {
+        session.removeAttribute("name");
+
+    }
+
+    String authUserName = (String) session.getAttribute("name");
+%>
+
+
+
+
+<form method="post">
+    <%if (authUserName == null) {%>
+    <h1>Formulário</h1>
+    <label for="name">Login:</label>
+    <input type="text" name="name"/>
+    <input type="submit" name="auth-login" value="Login"/>
+    <%} else {%>
+    <h1>Bem Vindo: <%=authUserName%> </h1>
+    <input type="submit" name="auth-logout" value="Logout" />
+    <a href="index.jsp">Início</a>
+    <a href="gabrielle.jsp">Dados Aluna</a>
+    <a href="gabrielle-dica-megasena.jsp">Mega-Sena</a>
+    <%}%>
+</form>
