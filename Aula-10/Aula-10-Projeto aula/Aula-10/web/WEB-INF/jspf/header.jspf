@@ -1,0 +1,53 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<%@page import="java.util.ArrayList"%>
+
+<%
+    if(request.getParameter("auth-login")!=null){
+        String userName = request.getParameter("auth-username");
+        session.setAttribute("auth-username", userName);
+        ArrayList<Integer> headerNumbers = new ArrayList<>();
+        while(headerNumbers.size()<6){
+            int n = ((int)(60*Math.random()))+1;
+            if(!headerNumbers.contains(n)){
+                headerNumbers.add(n);
+            }
+        }
+        session.setAttribute("auth-numbers", headerNumbers);
+        if(application.getAttribute("listaLogados")==null){
+            ArrayList<String> headerSessionList = new ArrayList<>();
+            headerSessionList.add(userName);
+            application.setAttribute("listaLogados", headerSessionList);
+        }else{
+            ArrayList<String> headerSessionList = (ArrayList)application.getAttribute("listaLogados");
+            headerSessionList.add(userName);
+            application.setAttribute("listaLogados", headerSessionList);
+        }
+        response.sendRedirect(request.getRequestURI());
+    }else if(request.getParameter("auth-logout")!=null){
+        if(application.getAttribute("listaLogados")!=null){
+            ArrayList<String> headerSessionList = (ArrayList)application.getAttribute("listaLogados");
+            headerSessionList.remove(session.getAttribute("auth-username"));
+            application.setAttribute("listaLogados", headerSessionList);
+        }
+        session.removeAttribute("auth-username");
+        session.removeAttribute("auth-numbers");
+        response.sendRedirect(request.getRequestURI());
+    }
+    String authUserName = (String) session.getAttribute("auth-username");
+%>
+
+<form method="post">
+    <%if (authUserName == null) {%>
+    <h1>Formulário</h1>
+    <label for="name">Login:</label>
+    <input type="text" name="auth-username"/>
+    <input type="submit" name="auth-login" value="Login"/>
+    <%} else {%>
+    <h1>Bem Vindo: <%=authUserName%> </h1>
+    <input type="submit" name="auth-logout" value="Logout" />
+    <a href="index.jsp">Início</a>
+    <a href="gabrielle.jsp">Dados Aluna</a>
+    <a href="gabrielle-dica-megasena.jsp">Mega-Sena</a>
+    <%}%>
+</form>
