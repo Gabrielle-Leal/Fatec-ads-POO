@@ -52,20 +52,7 @@
                 text-decoration: none;
                 
             }
-            a:hover,
-            #botao:hover{
-                background-color: #FFF842;
-                color: #403E10;
-                font-weight: bold;
-
-                box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
-                transform: translate3d(6px, -6px, 0);
-
-                transition-delay: 0s;
-                transition-duration: 0.4s;
-                transition-property: all;
-                transition-timing-function: line;
-            }
+           
             h1 {
                 font-size:3em; 
                 font-weight: 300;
